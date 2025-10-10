@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0
+    container_name: secure_keycloak
+    command:
+      - start-dev
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    ports:
+      - "8080:8080"
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+
+  secureapi:
+    build:
+      context: ./SecureApi
+      dockerfile: Dockerfile
+    container_name: secure_api
+    ports:
+      - "5001:8080"
+    depends_on:
+      - keycloak
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - Keycloak__Authority=http://keycloak:8080/realms/2cl-realm
+      - Keycloak__ClientId=secureapi
+      - Keycloak__RequireHttpsMetadata=false
+  angular-app:
+    build:
+      context: ./my-angular-keycloak-app
+      dockerfile: Dockerfile
+    container_name: angular_app
+    ports:
+      - "4200:80"
+    depends_on:
+      - secureapi
+    environment:
+      - Keycloak__Url=http://keycloak:8080
+      - Keycloak__Realm=2cl-realm
+      - Keycloak__ClientId=angular-app
+      - Api__BaseUrl=http://secureapi:8080
+
+volumes:
+  keycloak_data:

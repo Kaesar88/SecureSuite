@@ -1,0 +1,25 @@
+# Node / Angular
+node_modules/
+dist/
+npm-debug.log*
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+*.vscode/
+
+# Docker
+keycloak_data/
+*.env
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Visual Studio
+.vs/
