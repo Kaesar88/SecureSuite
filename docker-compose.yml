@@ -1,18 +1,52 @@
-version: '3.9'
-
 services:
+  openldap:
+    image: osixia/openldap:1.5.0
+    container_name: openldap
+    hostname: ldap.local
+    environment:
+      - LDAP_ORGANISATION=MiEmpresa
+      - LDAP_DOMAIN=miempresa.local
+      - LDAP_ADMIN_PASSWORD=${LDAP_ADMIN_PASSWORD}
+      - LDAP_CONFIG_PASSWORD=${LDAP_ADMIN_PASSWORD}
+      - LDAP_BACKEND=mdb
+      - LDAP_ADD_SCHEMAS=yes
+      - LDAP_INCLUDE_SCHEMAS=core,cosine,inetorgperson,nis
+      - LDAP_READ_ONLY_USER=false
+      - LDAP_TLS=false
+      - LDAP_REPLICATION=false
+    volumes:
+      - openldap_data:/var/lib/ldap
+      - openldap_config:/etc/ldap/slapd.d
+    ports:
+      - "389:389"
+    networks:
+      - iam-net
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: '0.5'
+
   keycloak:
-    image: quay.io/keycloak/keycloak:24.0
+    image: quay.io/keycloak/keycloak:24.0.5
     container_name: secure_keycloak
     command:
       - start-dev
     environment:
       - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
+      - KC_HOSTNAME=localhost
+    depends_on:
+      - openldap
+    restart: on-failure
     ports:
       - "8080:8080"
     volumes:
       - keycloak_data:/opt/keycloak/data
+      - ./keycloak/2cl-realm.json:/opt/keycloak/data/import/2cl-realm.json
+    networks:
+      - iam-net
 
   secureapi:
     build:
@@ -29,6 +63,9 @@ services:
       - Keycloak__Authority=http://keycloak:8080/realms/2cl-realm
       - Keycloak__ClientId=secureapi
       - Keycloak__RequireHttpsMetadata=false
+    networks:
+      - iam-net
+
   angular-app:
     build:
       context: ./my-angular-keycloak-app
@@ -43,6 +80,14 @@ services:
       - Keycloak__Realm=2cl-realm
       - Keycloak__ClientId=angular-app
       - Api__BaseUrl=http://secureapi:8080
+    networks:
+      - iam-net
+
+networks:
+  iam-net:
+    driver: bridge
 
 volumes:
+  openldap_data:
+  openldap_config:
   keycloak_data:

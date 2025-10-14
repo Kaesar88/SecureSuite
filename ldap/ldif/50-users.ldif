@@ -1,0 +1,61 @@
+# OUs
+dn: ou=ventas,dc=miempresa,dc=local
+objectClass: organizationalUnit
+ou: ventas
+
+dn: ou=tecnologia,dc=miempresa,dc=local
+objectClass: organizationalUnit
+ou: tecnologia
+
+dn: ou=recursos,dc=miempresa,dc=local
+objectClass: organizationalUnit
+ou: recursos
+
+# Usuarios
+dn: uid=juan,ou=ventas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Juan Perez
+sn: Perez
+uid: juan
+userPassword: JuanPass123
+mail: juan@miempresa.local
+
+dn: uid=maria,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Maria Lopez
+sn: Lopez
+uid: maria
+userPassword: MariaPass123
+mail: maria@miempresa.local
+
+dn: uid=carlos,ou=recursos,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Carlos Gomez
+sn: Gomez
+uid: carlos
+userPassword: CarlosPass123
+mail: carlos@miempresa.local
+
+dn: uid=ana,ou=ventas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Ana Ruiz
+sn: Ruiz
+uid: ana
+userPassword: AnaPass123
+mail: ana@miempresa.local
+
+dn: uid=diego,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Diego Fernandez
+sn: Fernandez
+uid: diego
+userPassword: DiegoPass123
+mail: diego@miempresa.local
+
+dn: uid=laura,ou=recursos,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Laura Torres
+sn: Torres
+uid: laura
+userPassword: LauraPass123
+mail: laura@miempresa.local
