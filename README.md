@@ -5,7 +5,7 @@ SecureSuite es un proyecto personal de integración de Keycloak, una aplicación
 
 ## Estructura del proyecto
 
-SecureSuite/
+```SecureSuite/
 ├── keycloak/                # Configuración de Keycloak y export del Realm
 │   └── 2cl-realm.json       # Partial export del Realm
 ├── ldap/ldif/               # Usuarios y OUs para pruebas
@@ -15,6 +15,7 @@ SecureSuite/
 ├── docker-compose.yml       # Orquestador de contenedores
 ├── .env                     # Variables de entorno (contraseñas, etc.)
 └── screenshots/             # Capturas de pantalla
+```
 
 
 ## Requisitos
