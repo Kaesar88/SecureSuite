@@ -79,12 +79,15 @@ Dashboard:
 ![Dashboard](./screenshots/dashboard.png)
 (SS del dashboard mostrado tras el login exitoso, con el usuario autenticado visible.)
 
+Federation LDAP:
 ![Federation LDAP](./screenshots/federacion.png)
 (SS de User Federation de Keycloak con LDAP activado (osixia/openldap).)
 
+Lista de usuarios:
 ![Lista de usuarios](./screenshots/lista-usuarios.png)
 (SS de la lista de importados desde LDAP mediante la federación.)
 
+Docker ps + estructura:
 ![SS de PowerShell](./screenshots/dockers-y-estructura.png)
 (SS de PowerShell mostrando contenedores activos y estructura principal del proyecto.)
 
