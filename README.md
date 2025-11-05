@@ -1,13 +1,29 @@
 ## SecureSuite
 
-SecureSuite es un proyecto personal de integración de Keycloak, una aplicación Angular y una API .NET, usando Docker Compose para un despliegue completo y reproducible. Incluye integración con **OpenLDAP (osixia/openldap)** para federación de usuarios y gestión de identidades.
+SecureSuite es un proyecto personal de integración de Keycloak, una aplicación Angular y una API .NET, usando Docker Compose para un despliegue completo y reproducible. Incluye integración con **OpenLDAP (osixia/openldap)** para federación de usuarios y gestión de identidades, login Keycloak personalizado y autenticación SSO con Google.
 
+## Fase 1 - Implementación base
+
+-Configuración inicial de Keycloak + OpenLDAP
+-API .NET con autenticación JWT
+-Frontend Angular básico
+-Dockerización completa
+
+## Fase 2 - Personalización y mejoras
+
+-Personalización completa del tema Keycloak (pantalla de login)
+-Autenticación SSO con Google Cloud Console
+-Sistema de roles y panel diferenciado para administradores
+-Mejoras en la interfaz Angular con información extendida de usuarios
 
 ## Estructura del proyecto
 
 ```SecureSuite/
 ├── keycloak/                # Configuración de Keycloak y export del Realm
-│   └── 2cl-realm.json       # Partial export del Realm
+│   ├── 2cl-realm.json       # Partial export del Realm
+│   └── themes/              # Temas personalizados de Keycloak
+│       └── custom/
+│           └── login/       # Tema personalizado para login
 ├── ldap/ldif/               # Usuarios y OUs para pruebas
 │   └── 50-users.ldif
 ├── my-angular-keycloak-app/ # Aplicación Angular
@@ -48,9 +64,20 @@ URL: http://localhost:5001
 
 ## Configuración de Keycloak
 
-Realm: 2cl-realm (keycloak/2cl-realm.json)
-Clientes y roles configurados según el proyecto Angular y la API .NET.
-Federación LDAP habilitada usando **OpenLDAP (osixia/openldap)** para los usuarios definidos en 50-users.ldif.
+-Realm: 2cl-realm (keycloak/2cl-realm.json)
+-Clientes y roles configurados según el proyecto Angular y la API .NET.
+-Federación LDAP habilitada usando **OpenLDAP (osixia/openldap)** para los usuarios definidos en 50-users.ldif.
+-Personalización del tema de login: Se ha implementado un tema personalizado en `keycloak/themes/custom/login`.
+-SSO con Google: Configuración de Identity Provider para Google (requiere configuración adicional con credenciales de Google Cloud Console).
+
+## Configuración de Google SSO
+
+Para habilitar el login con Google, debes:
+1. Crear un proyecto en Google Cloud Console
+2. Configurar la pantalla de consentimiento OAuth
+3. Crear credenciales OAuth 2.0 (Tipo: Aplicación web)
+4. Añadir la URI de redirección: `http://localhost:8080/realms/2cl-realm/broker/google/endpoint` (en este caso)
+5. En Keycloak, ve a `Identity Providers > Google` y introduce el Client ID y Client Secret.
 
 
 ## Usuarios de prueba (LDIF)
@@ -72,12 +99,20 @@ Login:
 (SS de la pantalla principal de la aplicación Angular, antes de redirigir al login de Keycloak.)
 
 Login en Keycloak:
-![Pantalla de Login de Keycloak](./screenshots/login-keycloak.png)
+![Pantalla de Login de Keycloak](./screenshots/login-keycloak_v2.png)
 (SS de la pantalla de login de Keycloak a la que redirige la aplicación Angular.)
 
 Dashboard:
-![Dashboard](./screenshots/dashboard.png)
+![Dashboard](./screenshots/dashboard_v2.png)
 (SS del dashboard mostrado tras el login exitoso, con el usuario autenticado visible.)
+
+Dashboard admin:
+![Dashboard](./screenshots/dashboard_ADM_v2.png)
+(SS del dashboard mostrado tras el login exitoso, con el usuario admin autenticado visible.)
+
+Login incorrecto:
+![Pantalla de Login de Keycloak incorrecto](./screenshots/invalid_user.png)
+(SS de la pantalla de login de Keycloak al intentar hacer login incorrecto.)
 
 Federation LDAP:
 ![Federation LDAP](./screenshots/federacion.png)
@@ -116,11 +151,13 @@ Reconstruir todo
 
 Todos los servicios se ejecutan en contenedores Docker, por lo que no se requiere instalación local de Node.js, Angular o .NET.
 
-Se puede modificar docker-compose.yml para personalizar puertos, volúmenes o variables de entorno.
+Se puede modificar `docker-compose.yml` para personalizar puertos, volúmenes o variables de entorno.
 
 Debido a cambios en client secrets al recrear clientes, si se vuelve a levantar el proyecto desde cero, puede ser necesario actualizar los secrets en Angular (environment.ts) y API (appsettings.json).
 
 El Realm exportado (2cl-realm.json) es un Partial Export incluyendo grupos y clientes.
+
+El tema personalizado de Keycloak se monta como volumen en el contenedor de Keycloak. Los cambios en los archivos del tema se reflejarán al recargar la página (en modo desarrollo).
 
 
 ## Autor
