@@ -15,6 +15,10 @@ import { CommonModule, DatePipe } from '@angular/common';
         <button (click)="loadUserData()">Datos User</button>
         <button (click)="showForecasts()">Ver Pronóstico</button>
         <button (click)="showNews()">Noticias</button>
+        
+        <div *ngIf="rolesLoaded && roles.includes('admin')" class="admin-section">
+          <button (click)="irAlPanelDeAdmin()">Panel de Administración</button>
+        </div>
       </aside>
 
       <main class="dashboard-main">
@@ -52,7 +56,6 @@ import { CommonModule, DatePipe } from '@angular/common';
       background-color: #f9fafb;
     }
 
-    /* Sidebar */
     .dashboard-sidebar {
       width: 220px;
       background-color: #ffffff;
@@ -91,7 +94,20 @@ import { CommonModule, DatePipe } from '@angular/common';
       transform: translateY(0);
     }
 
-    /* Main content */
+    .admin-section {
+      margin-top: 20px;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 20px;
+    }
+
+    .admin-section button {
+      background-color: #dc2626;
+      width: 100%;
+    }
+
+    .admin-section button:hover {
+      background-color: #b91c1c;
+
     .dashboard-main {
       flex: 1;
       padding: 24px;
@@ -144,20 +160,27 @@ import { CommonModule, DatePipe } from '@angular/common';
 export class DashboardComponent implements OnInit {
   userName: string | null = null;
   roles: string[] = [];
+  rolesLoaded = false;
   forecasts: any[] = [];
   showForecastSection = false;
   showNewsSection = false;
 
   constructor(private http: HttpClient, private keycloakService: KeycloakService) {}
 
-  ngOnInit(): void {
-    this.loadUserInfo();
+  async ngOnInit(): Promise<void> {
+    await this.loadRoles(); 
     this.loadForecasts();
   }
 
-  loadUserInfo(): void {
-    this.userName = this.keycloakService.getUsername();
-    this.roles = this.keycloakService.getUserRoles() || [];
+  async loadRoles(): Promise<void> {
+    const isLoggedIn = await this.keycloakService.isLoggedIn();
+    if (isLoggedIn) {
+      const tokenParsed = this.keycloakService.getKeycloakInstance().tokenParsed;
+      if (tokenParsed && tokenParsed['realm_access']?.['roles']) {
+        this.roles = tokenParsed['realm_access']['roles'];
+      }
+    }
+    this.rolesLoaded = true;
   }
 
   loadForecasts(): void {
@@ -166,7 +189,7 @@ export class DashboardComponent implements OnInit {
   }
 
   loadAdminData(): void {
-    if (this.roles.includes('Admin')) {
+    if (this.roles.includes('admin')) {
       this.http.get<any>('http://localhost:5001/api/weatherforecast/admin')
         .subscribe(data => console.log(data));
     } else {
@@ -175,7 +198,7 @@ export class DashboardComponent implements OnInit {
   }
 
   loadUserData(): void {
-    if (this.roles.includes('User') || this.roles.includes('Admin')) {
+    if (this.roles.includes('user') || this.roles.includes('admin')) {
       this.http.get<any>('http://localhost:5001/api/weatherforecast/user')
         .subscribe(data => console.log(data));
     } else {
@@ -191,5 +214,10 @@ export class DashboardComponent implements OnInit {
   showNews(): void {
     this.showNewsSection = !this.showNewsSection;
     this.showForecastSection = false;
+  }
+
+  irAlPanelDeAdmin(): void {
+    console.log("Navegando al Panel de Administración...");
+    alert("¡Bienvenido al Panel de Administración! (Esta es una demostración)");
   }
 }

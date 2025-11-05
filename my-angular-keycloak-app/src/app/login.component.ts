@@ -23,7 +23,6 @@ import { CommonModule } from '@angular/common';
   styles: [`
     @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap');
 
-    /* Página completa centrada */
     .login-page {
       display: flex;
       flex-direction: column;
@@ -34,10 +33,10 @@ import { CommonModule } from '@angular/common';
       font-family: 'Courier Prime', monospace;
     }
 
-    /* Card central */
+
     .login-card {
       background-color: #ffffff;
-      border: 1px solid #d1d5db; /* gris como header */
+      border: 1px solid #d1d5db; 
       border-radius: 12px;
       padding: 40px 32px;
       text-align: center;
@@ -61,7 +60,7 @@ import { CommonModule } from '@angular/common';
     }
 
     .login-card button {
-      background-color: #1e3a8a; /* azul */
+      background-color: #1e3a8a; 
       color: #ffffff;
       font-weight: 700;
       padding: 12px 24px;
@@ -82,14 +81,14 @@ import { CommonModule } from '@angular/common';
       transform: translateY(0);
     }
 
-    /* Footer */
+
     footer {
       margin-top: 40px;
       font-size: 0.9rem;
-      color: #9ca3af; /* gris claro */
+      color: #9ca3af; 
     }
 
-    /* Responsive */
+
     @media (max-width: 480px) {
       .login-card {
         padding: 32px 20px;

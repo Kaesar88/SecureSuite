@@ -4,11 +4,7 @@ import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-/**
- * Interceptor funcional para Keycloak (HttpInterceptorFn).
- * Inyecta KeycloakService y añade el token de acceso a la cabecera 'Authorization'.
- */
-// ¡CRÍTICO! Este es el nombre que se importa.
+
 export const keycloakInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn

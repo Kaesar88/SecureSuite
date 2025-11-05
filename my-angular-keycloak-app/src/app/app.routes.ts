@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login.component'; // Relativo: mismo folder
-import { DashboardComponent } from './dashboard.component'; // Relativo
-import { authGuard } from './auth-guard'; // Relativo (nota: archivo es auth-guard.ts, no .component)
+import { LoginComponent } from './login.component'; 
+import { DashboardComponent } from './dashboard.component'; 
+import { authGuard } from './auth-guard'; 
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },

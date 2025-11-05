@@ -33,6 +33,9 @@ services:
     container_name: secure_keycloak
     command:
       - start-dev
+      - --spi-theme-static-max-age=-1
+      - --spi-theme-cache-themes=false
+      - --spi-theme-cache-templates=false
     environment:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
@@ -45,6 +48,7 @@ services:
     volumes:
       - keycloak_data:/opt/keycloak/data
       - ./keycloak/2cl-realm.json:/opt/keycloak/data/import/2cl-realm.json
+      - ./keycloak/themes:/opt/keycloak/themes
     networks:
       - iam-net
 

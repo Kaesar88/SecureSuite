@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Security.Claims;
 
 namespace SecureApi.Controllers;
 
 [ApiController]
-[Route("api/[controller]")] // Define la base de la ruta como /api/weatherforecast
+[Route("api/[controller]")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -14,11 +16,27 @@ public class WeatherForecastController : ControllerBase
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
+    [HttpGet("userdetails  ")]
+    [Authorize]
+    public IActionResult GetUserDetails()
+    {
+        var userName = User.FindFirst("preferred_username")?.Value;
+        var email = User.FindFirst("email")?.Value;
+        var userRoles = User.FindAll("roles").Select(c => c.Value).ToList();
+            
+        return Ok(new
+        {
+            UserName = userName,
+            Email = email,
+            Roles = userRoles
+        });
+    }
+
     [HttpGet]
     [Authorize]
     public IActionResult Get()
     {
-        var userName = User.Identity?.Name;
+        var userName = User.FindFirst("preferred_username")?.Value;
         var userRoles = User.Claims
             .Where(c => c.Type == "roles")
             .Select(c => c.Value)

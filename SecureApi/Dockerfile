@@ -18,6 +18,6 @@ WORKDIR /app
 
 COPY --from=build /app/publish .
 
-EXPOSE 5001
+EXPOSE 8080
 
 ENTRYPOINT ["dotnet", "SecureApi.dll"]
