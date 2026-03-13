@@ -11,51 +11,506 @@ dn: ou=recursos,dc=miempresa,dc=local
 objectClass: organizationalUnit
 ou: recursos
 
+dn: ou=finanzas,dc=miempresa,dc=local
+objectClass: organizationalUnit
+ou: finanzas
+
+dn: ou=direccion,dc=miempresa,dc=local
+objectClass: organizationalUnit
+ou: direccion
+
 # Usuarios
-dn: uid=juan,ou=ventas,dc=miempresa,dc=local
+dn: uid=marta.jimenez,ou=ventas,dc=miempresa,dc=local
 objectClass: inetOrgPerson
-cn: Juan Perez
-sn: Perez
-uid: juan
-userPassword: {SSHA}CCJ4ZSTa41RXJIx2yQIyjfnfOMJcyG3t
-mail: juan@miempresa.local
+cn: Marta Jimenez Fernandez
+sn: Jimenez
+givenName: Marta
+uid: marta.jimenez
+userPassword: {SSHA}0pfxVXWP7jKvAxQbgxvhTmeEfkYplmj6
+mail: marta.jimenez@miempresa.local
+title: Sales Executive
+ou: ventas
 
-dn: uid=maria,ou=tecnologia,dc=miempresa,dc=local
+dn: uid=maria.gomez,ou=ventas,dc=miempresa,dc=local
 objectClass: inetOrgPerson
-cn: Maria Lopez
-sn: Lopez
-uid: maria
-userPassword: {SSHA}84q3x2wcrhe2n3JuzP5onv4B5RgMU2oF
-mail: maria@miempresa.local
-
-dn: uid=carlos,ou=recursos,dc=miempresa,dc=local
-objectClass: inetOrgPerson
-cn: Carlos Gomez
+cn: Maria Gomez Gomez
 sn: Gomez
-uid: carlos
-userPassword: {SSHA}osZpormO2nBTmV7aP31Rfy+hLnjSYqwg
-mail: carlos@miempresa.local
+givenName: Maria
+uid: maria.gomez
+userPassword: {SSHA}H2MLBPb0lUn9aDizcQZkNPnQlVATIVlz
+mail: maria.gomez@miempresa.local
+title: Account Manager
+ou: ventas
 
-dn: uid=ana,ou=ventas,dc=miempresa,dc=local
+dn: uid=cristina.fernandez,ou=ventas,dc=miempresa,dc=local
 objectClass: inetOrgPerson
-cn: Ana Ruiz
-sn: Ruiz
-uid: ana
-userPassword: {SSHA}kfMKDAe9uaXJZpHzgl1EPVLj4oOX/a0C
-mail: ana@miempresa.local
-
-dn: uid=diego,ou=tecnologia,dc=miempresa,dc=local
-objectClass: inetOrgPerson
-cn: Diego Fernandez
+cn: Cristina Fernandez Rodriguez
 sn: Fernandez
-uid: diego
-userPassword: {SSHA}TP9AjqR1VLUQuSBiWnCz84CEWIdpH0fQ
-mail: diego@miempresa.local
+givenName: Cristina
+uid: cristina.fernandez
+userPassword: {SSHA}ogq+CqNl2jhYEJ2vYkNytU2oB8e8m4Rs
+mail: cristina.fernandez@miempresa.local
+title: Sales Representative
+ou: ventas
 
-dn: uid=laura,ou=recursos,dc=miempresa,dc=local
+dn: uid=diego.mendez,ou=ventas,dc=miempresa,dc=local
 objectClass: inetOrgPerson
-cn: Laura Torres
+cn: Diego Mendez Perez
+sn: Mendez
+givenName: Diego
+uid: diego.mendez
+userPassword: {SSHA}/+akvyTmYq6EJ6sdBd0n23qdr+hlTdNV
+mail: diego.mendez@miempresa.local
+title: Sales Consultant
+ou: ventas
+
+dn: uid=ana.perez,ou=ventas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Ana Perez Ruiz
+sn: Perez
+givenName: Ana
+uid: ana.perez
+userPassword: {SSHA}ULDucWpDJwDp4GuML4r6IO4y/sUziVZF
+mail: ana.perez@miempresa.local
+title: Business Developer
+ou: ventas
+
+dn: uid=miguel.jimenez,ou=ventas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Miguel Jimenez Torres
+sn: Jimenez
+givenName: Miguel
+uid: miguel.jimenez
+userPassword: {SSHA}JtARMGGlA+CH3WFF2A6yCRdb6AbHgPYI
+mail: miguel.jimenez@miempresa.local
+title: Sales Executive
+ou: ventas
+
+dn: uid=roberto.castro,ou=ventas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Roberto Castro Diaz
+sn: Castro
+givenName: Roberto
+uid: roberto.castro
+userPassword: {SSHA}8H8VojdAMfc25cVv47Nt1PfYWBUK9gRA
+mail: roberto.castro@miempresa.local
+title: Account Manager
+ou: ventas
+
+dn: uid=patricia.martinez,ou=ventas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Patricia Martinez Moreno
+sn: Martinez
+givenName: Patricia
+uid: patricia.martinez
+userPassword: {SSHA}YSySdNmA9vH9KtUUzovTZpeZGTA3tFU7
+mail: patricia.martinez@miempresa.local
+title: Sales Representative
+ou: ventas
+
+dn: uid=lucia.gomez,ou=ventas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Lucia Gomez Jimenez
+sn: Gomez
+givenName: Lucia
+uid: lucia.gomez
+userPassword: {SSHA}s4wyDljl0V261pNSkQeokDrUxcgtUCrx
+mail: lucia.gomez@miempresa.local
+title: Sales Consultant
+ou: ventas
+
+dn: uid=alejandro.torres,ou=ventas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Alejandro Torres Alvarez
 sn: Torres
-uid: laura
-userPassword: {SSHA}yDiQyru+YMFcJ+qU+WO+sUD2NJteIy8X
-mail: laura@miempresa.local
+givenName: Alejandro
+uid: alejandro.torres
+userPassword: {SSHA}wuu2qOR9+hXAHEylGPhvY8Eq8AiwGWWb
+mail: alejandro.torres@miempresa.local
+title: Business Developer
+ou: ventas
+
+dn: uid=maria.fernandez,ou=ventas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Maria Fernandez Romero
+sn: Fernandez
+givenName: Maria
+uid: maria.fernandez
+userPassword: {SSHA}C8LuxFnwgvEDlrY1q4w4Ofcu7fjQzGw+
+mail: maria.fernandez@miempresa.local
+title: Sales Executive
+ou: ventas
+
+dn: uid=sofia.romero,ou=ventas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Sofia Romero Castro
+sn: Romero
+givenName: Sofia
+uid: sofia.romero
+userPassword: {SSHA}OtPggJ2X1uZtAp5JvSqEwarcOTOpb+pG
+mail: sofia.romero@miempresa.local
+title: Account Manager
+ou: ventas
+
+dn: uid=lucia.rodriguez,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Lucia Rodriguez Navarro
+sn: Rodriguez
+givenName: Lucia
+uid: lucia.rodriguez
+userPassword: {SSHA}7G1GsS+GZDxVRsDO6yQ9/E7hwIgOjYpJ
+mail: lucia.rodriguez@miempresa.local
+title: Software Developer
+ou: tecnologia
+
+dn: uid=miguel.romero,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Miguel Romero Molina
+sn: Romero
+givenName: Miguel
+uid: miguel.romero
+userPassword: {SSHA}T90ae0lygA00dCENMkLGJNYr2vVwf6N5
+mail: miguel.romero@miempresa.local
+title: Systems Administrator
+ou: tecnologia
+
+dn: uid=fernando.herrera,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Fernando Herrera Herrera
+sn: Herrera
+givenName: Fernando
+uid: fernando.herrera
+userPassword: {SSHA}eztwB2U5ROTd2hf2V1T3M2CcMclNZY++
+mail: fernando.herrera@miempresa.local
+title: DevOps Engineer
+ou: tecnologia
+
+dn: uid=marta.ruiz,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Marta Ruiz Mendez
+sn: Ruiz
+givenName: Marta
+uid: marta.ruiz
+userPassword: {SSHA}uDif3L6QPcxDO1wvn3pBfsCfNsjKm4rt
+mail: marta.ruiz@miempresa.local
+title: Security Analyst
+ou: tecnologia
+
+dn: uid=miguel.castro,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Miguel Castro Garcia
+sn: Castro
+givenName: Miguel
+uid: miguel.castro
+userPassword: {SSHA}XnfM9FCYwFuxUgbXUc2ajeQdBXG1lBMK
+mail: miguel.castro@miempresa.local
+title: IT Consultant
+ou: tecnologia
+
+dn: uid=antonio.torres,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Antonio Torres Martinez
+sn: Torres
+givenName: Antonio
+uid: antonio.torres
+userPassword: {SSHA}GnwKSFy6HdYnJcPsKWCRi1o1MaIq4itT
+mail: antonio.torres@miempresa.local
+title: Software Developer
+ou: tecnologia
+
+dn: uid=ana.sanchez,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Ana Sanchez Lopez
+sn: Sanchez
+givenName: Ana
+uid: ana.sanchez
+userPassword: {SSHA}lgqYA59RazBA1p7QwoqNlXz3dy8DUbMU
+mail: ana.sanchez@miempresa.local
+title: Systems Administrator
+ou: tecnologia
+
+dn: uid=fernando.perez,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Fernando Perez Sanchez
+sn: Perez
+givenName: Fernando
+uid: fernando.perez
+userPassword: {SSHA}3BKw8y2RWErNwmsy6+ZwG+s3O+8VNg+6
+mail: fernando.perez@miempresa.local
+title: DevOps Engineer
+ou: tecnologia
+
+dn: uid=david.sanchez,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: David Sanchez Fernandez
+sn: Sanchez
+givenName: David
+uid: david.sanchez
+userPassword: {SSHA}J7Wacb355XL1J6kgery0gS3IdY09AE1w
+mail: david.sanchez@miempresa.local
+title: Security Analyst
+ou: tecnologia
+
+dn: uid=patricia.moreno,ou=tecnologia,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Patricia Moreno Gomez
+sn: Moreno
+givenName: Patricia
+uid: patricia.moreno
+userPassword: {SSHA}Cclwba8f43mDz8i3cGvGCLcyhEBdHZAT
+mail: patricia.moreno@miempresa.local
+title: IT Consultant
+ou: tecnologia
+
+dn: uid=juan.perez,ou=recursos,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Juan Perez Rodriguez
+sn: Perez
+givenName: Juan
+uid: juan.perez
+userPassword: {SSHA}rZtJqOzcIPOkCN1K68eCuD89SKo/xnwU
+mail: juan.perez@miempresa.local
+title: HR Specialist
+ou: recursos
+
+dn: uid=laura.rodriguez,ou=recursos,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Laura Rodriguez Perez
+sn: Rodriguez
+givenName: Laura
+uid: laura.rodriguez
+userPassword: {SSHA}EV9fYU5f5MxnKcF6gizlTtVrRFu4oslX
+mail: laura.rodriguez@miempresa.local
+title: Talent Acquisition
+ou: recursos
+
+dn: uid=carlos.martinez,ou=recursos,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Carlos Martinez Ruiz
+sn: Martinez
+givenName: Carlos
+uid: carlos.martinez
+userPassword: {SSHA}2r8oVBrmGrSwvJ3B6Sibdbm1W9gDOlH0
+mail: carlos.martinez@miempresa.local
+title: HR Manager
+ou: recursos
+
+dn: uid=roberto.perez,ou=recursos,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Roberto Perez Torres
+sn: Perez
+givenName: Roberto
+uid: roberto.perez
+userPassword: {SSHA}jswaJ9AehOZFl5axjs/sbTTUW8Me4Yuz
+mail: roberto.perez@miempresa.local
+title: Payroll Specialist
+ou: recursos
+
+dn: uid=miguel.ruiz,ou=recursos,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Miguel Ruiz Diaz
+sn: Ruiz
+givenName: Miguel
+uid: miguel.ruiz
+userPassword: {SSHA}wCpRehbcbrR+71kIE70DnljGJfW0OGSN
+mail: miguel.ruiz@miempresa.local
+title: HR Consultant
+ou: recursos
+
+dn: uid=ana.ruiz,ou=recursos,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Ana Ruiz Moreno
+sn: Ruiz
+givenName: Ana
+uid: ana.ruiz
+userPassword: {SSHA}pSUFwvrQ23WXFfaxdZN7Cr/9BRiciZT6
+mail: ana.ruiz@miempresa.local
+title: HR Specialist
+ou: recursos
+
+dn: uid=maria.alvarez,ou=recursos,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Maria Alvarez Jimenez
+sn: Alvarez
+givenName: Maria
+uid: maria.alvarez
+userPassword: {SSHA}MgRk6AF18vqoiEmAaUlO/5ICArT0FFtk
+mail: maria.alvarez@miempresa.local
+title: Talent Acquisition
+ou: recursos
+
+dn: uid=diego.gomez,ou=recursos,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Diego Gomez Alvarez
+sn: Gomez
+givenName: Diego
+uid: diego.gomez
+userPassword: {SSHA}l6J45i9P+vF274DbSVHXKp5E6pQxbjKa
+mail: diego.gomez@miempresa.local
+title: HR Manager
+ou: recursos
+
+dn: uid=sergio.sanchez,ou=finanzas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Sergio Sanchez Romero
+sn: Sanchez
+givenName: Sergio
+uid: sergio.sanchez
+userPassword: {SSHA}G3ousumMp2TwWLEVchZzSbQaq2wKjaHB
+mail: sergio.sanchez@miempresa.local
+title: Financial Analyst
+ou: finanzas
+
+dn: uid=jose.garcia,ou=finanzas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Jose Garcia Castro
+sn: Garcia
+givenName: Jose
+uid: jose.garcia
+userPassword: {SSHA}c1KGfEUk5r6PnfP9YDqwKVj0aE6dw8eh
+mail: jose.garcia@miempresa.local
+title: Accountant
+ou: finanzas
+
+dn: uid=david.alvarez,ou=finanzas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: David Alvarez Navarro
+sn: Alvarez
+givenName: David
+uid: david.alvarez
+userPassword: {SSHA}Br+yjBtQ7hcXIPY77Wyyo+VznX74id9j
+mail: david.alvarez@miempresa.local
+title: Finance Controller
+ou: finanzas
+
+dn: uid=roberto.alvarez,ou=finanzas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Roberto Alvarez Molina
+sn: Alvarez
+givenName: Roberto
+uid: roberto.alvarez
+userPassword: {SSHA}pAAhggy9xpZXrODh+uJCPoBRQCV1WxPx
+mail: roberto.alvarez@miempresa.local
+title: Budget Analyst
+ou: finanzas
+
+dn: uid=david.martinez,ou=finanzas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: David Martinez Herrera
+sn: Martinez
+givenName: David
+uid: david.martinez
+userPassword: {SSHA}A4WsKYasMIk2CanE2P4heS+yGbEV12pT
+mail: david.martinez@miempresa.local
+title: Treasury Specialist
+ou: finanzas
+
+dn: uid=diego.martinez,ou=finanzas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Diego Martinez Mendez
+sn: Martinez
+givenName: Diego
+uid: diego.martinez
+userPassword: {SSHA}NfZClzJH6TdPdIYO7qBW0dnBtTxtfBm0
+mail: diego.martinez@miempresa.local
+title: Financial Analyst
+ou: finanzas
+
+dn: uid=diego.diaz,ou=finanzas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Diego Diaz Garcia
+sn: Diaz
+givenName: Diego
+uid: diego.diaz
+userPassword: {SSHA}OUzGKdbe80wqE3vdiIqr6QEiLHG+Xtf8
+mail: diego.diaz@miempresa.local
+title: Accountant
+ou: finanzas
+
+dn: uid=elena.moreno,ou=finanzas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Elena Moreno Martinez
+sn: Moreno
+givenName: Elena
+uid: elena.moreno
+userPassword: {SSHA}2XYC3E2P99ZSFPhlNyhUhuGIazrbYZOh
+mail: elena.moreno@miempresa.local
+title: Finance Controller
+ou: finanzas
+
+dn: uid=patricia.herrera,ou=finanzas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Patricia Herrera Lopez
+sn: Herrera
+givenName: Patricia
+uid: patricia.herrera
+userPassword: {SSHA}JjKHP2Pc3cRneY68Wjyy9k/YZTXyFsg2
+mail: patricia.herrera@miempresa.local
+title: Budget Analyst
+ou: finanzas
+
+dn: uid=laura.molina,ou=finanzas,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Laura Molina Sanchez
+sn: Molina
+givenName: Laura
+uid: laura.molina
+userPassword: {SSHA}pOMkMBXsIS55TFeJxrPoEonKZfNy6UCp
+mail: laura.molina@miempresa.local
+title: Treasury Specialist
+ou: finanzas
+
+dn: uid=jose.torres,ou=direccion,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Jose Torres Fernandez
+sn: Torres
+givenName: Jose
+uid: jose.torres
+userPassword: {SSHA}THXO15XfO67MV8qrd+sYpk5p3IR6xRSq
+mail: jose.torres@miempresa.local
+title: CEO
+ou: direccion
+
+dn: uid=alejandro.garcia,ou=direccion,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Alejandro Garcia Gomez
+sn: Garcia
+givenName: Alejandro
+uid: alejandro.garcia
+userPassword: {SSHA}bRMFx6qlw8j8ijBKFTF8HyPWXMzOhJUU
+mail: alejandro.garcia@miempresa.local
+title: CFO
+ou: direccion
+
+dn: uid=miguel.torres,ou=direccion,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Miguel Torres Rodriguez
+sn: Torres
+givenName: Miguel
+uid: miguel.torres
+userPassword: {SSHA}lYwwGGU+Ay15uH4NGSOfJ7C8N5wkzwOc
+mail: miguel.torres@miempresa.local
+title: CTO
+ou: direccion
+
+dn: uid=lucia.martinez,ou=direccion,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Lucia Martinez Perez
+sn: Martinez
+givenName: Lucia
+uid: lucia.martinez
+userPassword: {SSHA}TiNb6lGoBaUSVmkqrUsMKf91C1bzsSOX
+mail: lucia.martinez@miempresa.local
+title: COO
+ou: direccion
+
+dn: uid=alejandro.diaz,ou=direccion,dc=miempresa,dc=local
+objectClass: inetOrgPerson
+cn: Alejandro Diaz Ruiz
+sn: Diaz
+givenName: Alejandro
+uid: alejandro.diaz
+userPassword: {SSHA}IacA2/gkJwhEtOW3O0OJ+NWfJukQ/Bc4
+mail: alejandro.diaz@miempresa.local
+title: Director General
+ou: direccion
