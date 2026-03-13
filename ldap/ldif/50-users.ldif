@@ -17,7 +17,7 @@ objectClass: inetOrgPerson
 cn: Juan Perez
 sn: Perez
 uid: juan
-userPassword: JuanPass123
+userPassword: {SSHA}CCJ4ZSTa41RXJIx2yQIyjfnfOMJcyG3t
 mail: juan@miempresa.local
 
 dn: uid=maria,ou=tecnologia,dc=miempresa,dc=local
@@ -25,7 +25,7 @@ objectClass: inetOrgPerson
 cn: Maria Lopez
 sn: Lopez
 uid: maria
-userPassword: MariaPass123
+userPassword: {SSHA}84q3x2wcrhe2n3JuzP5onv4B5RgMU2oF
 mail: maria@miempresa.local
 
 dn: uid=carlos,ou=recursos,dc=miempresa,dc=local
@@ -33,7 +33,7 @@ objectClass: inetOrgPerson
 cn: Carlos Gomez
 sn: Gomez
 uid: carlos
-userPassword: CarlosPass123
+userPassword: {SSHA}osZpormO2nBTmV7aP31Rfy+hLnjSYqwg
 mail: carlos@miempresa.local
 
 dn: uid=ana,ou=ventas,dc=miempresa,dc=local
@@ -41,7 +41,7 @@ objectClass: inetOrgPerson
 cn: Ana Ruiz
 sn: Ruiz
 uid: ana
-userPassword: AnaPass123
+userPassword: {SSHA}kfMKDAe9uaXJZpHzgl1EPVLj4oOX/a0C
 mail: ana@miempresa.local
 
 dn: uid=diego,ou=tecnologia,dc=miempresa,dc=local
@@ -49,7 +49,7 @@ objectClass: inetOrgPerson
 cn: Diego Fernandez
 sn: Fernandez
 uid: diego
-userPassword: DiegoPass123
+userPassword: {SSHA}TP9AjqR1VLUQuSBiWnCz84CEWIdpH0fQ
 mail: diego@miempresa.local
 
 dn: uid=laura,ou=recursos,dc=miempresa,dc=local
@@ -57,5 +57,5 @@ objectClass: inetOrgPerson
 cn: Laura Torres
 sn: Torres
 uid: laura
-userPassword: LauraPass123
+userPassword: {SSHA}yDiQyru+YMFcJ+qU+WO+sUD2NJteIy8X
 mail: laura@miempresa.local
