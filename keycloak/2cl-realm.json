@@ -47,6 +47,15 @@
   "roles": {
     "realm": [
       {
+        "id": "9d2a1f3f-96cf-44df-9968-c0d5b589c2af",
+        "name": "role_admin",
+        "description": "Admin",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "3f69a9e3-a07f-4fae-8cde-ff5c37ea4c1c",
+        "attributes": {}
+      },
+      {
         "id": "7ce72512-42d2-48e5-be28-a07d728c731e",
         "name": "default-roles-2cl-realm",
         "description": "${role_default-roles}",
@@ -68,6 +77,15 @@
         "attributes": {}
       },
       {
+        "id": "f061bea8-ad80-4581-a42c-79d5c15f5f8f",
+        "name": "role_employee",
+        "description": "Empleado",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "3f69a9e3-a07f-4fae-8cde-ff5c37ea4c1c",
+        "attributes": {}
+      },
+      {
         "id": "2283cf5f-7a9b-4c58-bcbe-3f225a152841",
         "name": "offline_access",
         "description": "${role_offline-access}",
@@ -80,6 +98,15 @@
         "id": "e4a8f0aa-c8e6-4ffe-8ba3-0f173b0b2798",
         "name": "uma_authorization",
         "description": "${role_uma_authorization}",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "3f69a9e3-a07f-4fae-8cde-ff5c37ea4c1c",
+        "attributes": {}
+      },
+      {
+        "id": "967582d3-8b6f-4659-ae61-8ae69b559fce",
+        "name": "role_manager",
+        "description": "Manager",
         "composite": false,
         "clientRole": false,
         "containerId": "3f69a9e3-a07f-4fae-8cde-ff5c37ea4c1c",
@@ -405,7 +432,65 @@
       ]
     }
   },
-  "groups": [],
+  "groups": [
+    {
+      "id": "c4198019-c64c-4eec-94d9-0567b59e7ccf",
+      "name": "grp_direccion",
+      "path": "/grp_direccion",
+      "subGroups": [],
+      "attributes": {},
+      "realmRoles": [
+        "role_admin",
+        "role_manager"
+      ],
+      "clientRoles": {}
+    },
+    {
+      "id": "005ab193-165a-4d7e-95cc-3eb090cceb91",
+      "name": "grp_finanzas",
+      "path": "/grp_finanzas",
+      "subGroups": [],
+      "attributes": {},
+      "realmRoles": [
+        "role_employee"
+      ],
+      "clientRoles": {}
+    },
+    {
+      "id": "d75d6fa7-703f-4acb-b97b-2c520e0a1ef6",
+      "name": "grp_recursos",
+      "path": "/grp_recursos",
+      "subGroups": [],
+      "attributes": {},
+      "realmRoles": [
+        "role_employee"
+      ],
+      "clientRoles": {}
+    },
+    {
+      "id": "04af7477-92e3-40cd-acbe-0af54301d459",
+      "name": "grp_tecnologia",
+      "path": "/grp_tecnologia",
+      "subGroups": [],
+      "attributes": {},
+      "realmRoles": [
+        "role_employee",
+        "role_manager"
+      ],
+      "clientRoles": {}
+    },
+    {
+      "id": "0f914aa2-3384-48a3-9e13-85356ef21a88",
+      "name": "grp_ventas",
+      "path": "/grp_ventas",
+      "subGroups": [],
+      "attributes": {},
+      "realmRoles": [
+        "role_employee"
+      ],
+      "clientRoles": {}
+    }
+  ],
   "defaultRole": {
     "id": "7ce72512-42d2-48e5-be28-a07d728c731e",
     "name": "default-roles-2cl-realm",
@@ -595,7 +680,9 @@
       "publicClient": true,
       "frontchannelLogout": false,
       "protocol": "openid-connect",
-      "attributes": {},
+      "attributes": {
+        "post.logout.redirect.uris": "+"
+      },
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
@@ -676,7 +763,9 @@
       "publicClient": false,
       "frontchannelLogout": false,
       "protocol": "openid-connect",
-      "attributes": {},
+      "attributes": {
+        "post.logout.redirect.uris": "+"
+      },
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
@@ -714,7 +803,9 @@
       "publicClient": false,
       "frontchannelLogout": false,
       "protocol": "openid-connect",
-      "attributes": {},
+      "attributes": {
+        "post.logout.redirect.uris": "+"
+      },
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
@@ -1137,6 +1228,7 @@
           "config": {
             "introspection.token.claim": "true",
             "multivalued": "true",
+            "userinfo.token.claim": "true",
             "user.attribute": "foo",
             "id.token.claim": "true",
             "access.token.claim": "true",
@@ -1289,7 +1381,8 @@
           "config": {
             "id.token.claim": "true",
             "introspection.token.claim": "true",
-            "access.token.claim": "true"
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
           }
         }
       ]
@@ -1406,6 +1499,10 @@
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
   "smtpServer": {},
+  "loginTheme": "custom",
+  "accountTheme": "",
+  "adminTheme": "",
+  "emailTheme": "",
   "eventsEnabled": false,
   "eventsListeners": [
     "jboss-logging"
@@ -1413,7 +1510,29 @@
   "enabledEventTypes": [],
   "adminEventsEnabled": false,
   "adminEventsDetailsEnabled": false,
-  "identityProviders": [],
+  "identityProviders": [
+    {
+      "alias": "google",
+      "internalId": "a6e357f1-2074-491f-b350-cf93d3501a5d",
+      "providerId": "google",
+      "enabled": true,
+      "updateProfileFirstLoginMode": "on",
+      "trustEmail": false,
+      "storeToken": false,
+      "addReadTokenRoleOnCreate": false,
+      "authenticateByDefault": false,
+      "linkOnly": false,
+      "config": {
+        "hideOnLoginPage": "false",
+        "clientId": "440792801907-djqr8o7207ifda9ovb15psjcgi52l78s.apps.googleusercontent.com",
+        "acceptsPromptNoneForwardFromClient": "false",
+        "disableUserInfo": "false",
+        "filteredByClaim": "false",
+        "syncMode": "IMPORT",
+        "clientSecret": "**********"
+      }
+    }
+  ],
   "identityProviderMappers": [],
   "components": {
     "org.keycloak.services.clientregistration.policy.ClientRegistrationPolicy": [
@@ -1445,14 +1564,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "saml-user-property-mapper",
-            "oidc-full-name-mapper",
-            "saml-role-list-mapper",
-            "oidc-address-mapper",
-            "oidc-usermodel-attribute-mapper",
-            "oidc-usermodel-property-mapper",
             "saml-user-attribute-mapper",
-            "oidc-sha256-pairwise-sub-mapper"
+            "oidc-sha256-pairwise-sub-mapper",
+            "oidc-usermodel-property-mapper",
+            "saml-role-list-mapper",
+            "saml-user-property-mapper",
+            "oidc-address-mapper",
+            "oidc-full-name-mapper",
+            "oidc-usermodel-attribute-mapper"
           ]
         }
       },
@@ -1484,14 +1603,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-sha256-pairwise-sub-mapper",
-            "oidc-address-mapper",
-            "saml-user-property-mapper",
-            "oidc-full-name-mapper",
             "saml-user-attribute-mapper",
             "oidc-usermodel-attribute-mapper",
             "saml-role-list-mapper",
-            "oidc-usermodel-property-mapper"
+            "saml-user-property-mapper",
+            "oidc-full-name-mapper",
+            "oidc-usermodel-property-mapper",
+            "oidc-address-mapper",
+            "oidc-sha256-pairwise-sub-mapper"
           ]
         }
       },
@@ -1571,10 +1690,10 @@
                 "is.mandatory.in.ldap": [
                   "true"
                 ],
-                "always.read.value.from.ldap": [
+                "read.only": [
                   "true"
                 ],
-                "read.only": [
+                "always.read.value.from.ldap": [
                   "true"
                 ],
                 "user.model.attribute": [
@@ -1663,10 +1782,10 @@
                 "is.mandatory.in.ldap": [
                   "true"
                 ],
-                "read.only": [
+                "always.read.value.from.ldap": [
                   "true"
                 ],
-                "always.read.value.from.ldap": [
+                "read.only": [
                   "true"
                 ],
                 "user.model.attribute": [
@@ -1727,6 +1846,9 @@
           "enabled": [
             "true"
           ],
+          "bindCredential": [
+            "**********"
+          ],
           "bindDn": [
             "cn=admin,dc=miempresa,dc=local"
           ],
@@ -1735,9 +1857,6 @@
           ],
           "usernameLDAPAttribute": [
             "uid"
-          ],
-          "bindCredential": [
-            "**********"
           ],
           "vendor": [
             "other"
@@ -1769,11 +1888,11 @@
           "usePasswordModifyExtendedOp": [
             "false"
           ],
-          "priority": [
-            "0"
-          ],
           "trustEmail": [
             "false"
+          ],
+          "priority": [
+            "0"
           ],
           "userObjectClasses": [
             "inetOrgPerson"
@@ -2495,8 +2614,12 @@
     "cibaExpiresIn": "120",
     "cibaAuthRequestedUserHint": "login_hint",
     "oauth2DeviceCodeLifespan": "600",
+    "clientOfflineSessionMaxLifespan": "0",
     "oauth2DevicePollingInterval": "5",
+    "clientSessionIdleTimeout": "0",
     "parRequestUriLifespan": "60",
+    "clientSessionMaxLifespan": "0",
+    "clientOfflineSessionIdleTimeout": "0",
     "cibaInterval": "5",
     "realmReusableOtpCode": "false"
   },
