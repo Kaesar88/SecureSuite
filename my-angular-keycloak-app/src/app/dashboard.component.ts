@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
 import { CommonModule, DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,8 +17,19 @@ import { CommonModule, DatePipe } from '@angular/common';
         <button (click)="showForecasts()">Ver Pronóstico</button>
         <button (click)="showNews()">Noticias</button>
         
-        <div *ngIf="rolesLoaded && roles.includes('admin')" class="admin-section">
-          <button (click)="irAlPanelDeAdmin()">Panel de Administración</button>
+        <div class="divider"></div>
+
+        <div *ngIf="rolesLoaded && !roles.includes('role_admin') && !roles.includes('role_manager') && !isAreaManager" class="request-section">
+          <button class="btn-sidebar" (click)="irASolicitudAcceso()"> Solicitar Rol Manager</button>
+        </div>
+
+        <div *ngIf="rolesLoaded && (isAreaManager)" class="manager-section">
+          <button class="btn-sidebar" (click)="irAlPanelAreaManager()"> Panel de Jefe de Área</button>
+          <button class="btn-sidebar" (click)="irARolesOverview()"> Vista Global de Roles</button>
+        </div>
+
+        <div *ngIf="rolesLoaded && roles.includes('role_admin')" class="admin-section">
+          <button class="btn-sidebar" (click)="irAlPanelDeAdmin()"> Panel de Administración</button>
         </div>
       </aside>
 
@@ -94,6 +106,22 @@ import { CommonModule, DatePipe } from '@angular/common';
       transform: translateY(0);
     }
 
+    .manager-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .manager-section button {
+      background-color: #065f46;
+      width: 100%;
+    }
+
+    .manager-section button:hover {
+      background-color: #047857;
+    }
+
     .admin-section {
       margin-top: 20px;
       border-top: 1px solid #e5e7eb;
@@ -107,6 +135,25 @@ import { CommonModule, DatePipe } from '@angular/common';
 
     .admin-section button:hover {
       background-color: #b91c1c;
+    }
+
+    .divider {
+      border-top: 1px solid #e5e7eb;
+      margin: 8px 0;
+    }
+
+    .request-section {
+      width: 100%;
+    }
+
+    .request-section button {
+      background-color: #1e3a8a;
+      width: 100%;
+    }
+
+    .request-section button:hover {
+      background-color: #3b82f6;
+    }
 
     .dashboard-main {
       flex: 1;
@@ -161,11 +208,12 @@ export class DashboardComponent implements OnInit {
   userName: string | null = null;
   roles: string[] = [];
   rolesLoaded = false;
+  get isAreaManager(): boolean { return this.roles.some(r => r.startsWith('role_manager_')); }
   forecasts: any[] = [];
   showForecastSection = false;
   showNewsSection = false;
 
-  constructor(private http: HttpClient, private keycloakService: KeycloakService) {}
+  constructor(private http: HttpClient, private keycloakService: KeycloakService, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
     await this.loadRoles(); 
@@ -177,7 +225,7 @@ export class DashboardComponent implements OnInit {
     if (isLoggedIn) {
       const tokenParsed = this.keycloakService.getKeycloakInstance().tokenParsed;
       if (tokenParsed && tokenParsed['realm_access']?.['roles']) {
-        this.roles = tokenParsed['realm_access']['roles'];
+        this.roles = tokenParsed['realm_access']['roles'].filter((r: string) => r.startsWith('role_'));
       }
     }
     this.rolesLoaded = true;
@@ -189,7 +237,7 @@ export class DashboardComponent implements OnInit {
   }
 
   loadAdminData(): void {
-    if (this.roles.includes('admin')) {
+    if (this.roles.includes('role_admin')) {
       this.http.get<any>('http://localhost:5001/api/weatherforecast/admin')
         .subscribe(data => console.log(data));
     } else {
@@ -198,7 +246,7 @@ export class DashboardComponent implements OnInit {
   }
 
   loadUserData(): void {
-    if (this.roles.includes('user') || this.roles.includes('admin')) {
+    if (this.roles.includes('role_employee') || this.roles.includes('role_manager') || this.roles.includes('role_admin')) {
       this.http.get<any>('http://localhost:5001/api/weatherforecast/user')
         .subscribe(data => console.log(data));
     } else {
@@ -217,7 +265,18 @@ export class DashboardComponent implements OnInit {
   }
 
   irAlPanelDeAdmin(): void {
-    console.log("Navegando al Panel de Administración...");
-    alert("¡Bienvenido al Panel de Administración! (Esta es una demostración)");
+    this.router.navigate(['/admin-panel']);
+  }
+
+  irAlPanelAreaManager(): void {
+    this.router.navigate(['/area-manager']);
+  }
+
+  irARolesOverview(): void {
+    this.router.navigate(['/roles-overview']);
+  }
+
+  irASolicitudAcceso(): void {
+    this.router.navigate(['/access-request']);
   }
 }
