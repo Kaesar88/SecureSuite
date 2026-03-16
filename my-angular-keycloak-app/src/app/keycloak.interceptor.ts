@@ -4,14 +4,16 @@ import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-
 export const keycloakInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> => {
   const keycloakService = inject(KeycloakService);
 
-  if (!keycloakService.isLoggedIn()) {
+
+  const isAuthenticated = keycloakService.getKeycloakInstance()?.authenticated;
+
+  if (!isAuthenticated) {
     return next(req);
   }
 
