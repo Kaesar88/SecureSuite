@@ -729,6 +729,25 @@
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": true,
       "nodeReRegistrationTimeout": -1,
+      "protocolMappers": [
+        {
+          "id": "1f185f83-88eb-46b2-808b-0a5ee7b407ee",
+          "name": "ou-to-group",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "introspection.token.claim": "true",
+            "userinfo.token.claim": "true",
+            "user.attribute": "ou",
+            "id.token.claim": "true",
+            "lightweight.claim": "false",
+            "access.token.claim": "true",
+            "claim.name": "department",
+            "jsonType.label": "String"
+          }
+        }
+      ],
       "defaultClientScopes": [
         "web-origins",
         "acr",
@@ -1794,6 +1813,35 @@
               }
             },
             {
+              "id": "206d0048-493d-4dac-bed3-f127a4960621",
+              "name": "department-mapper",
+              "providerId": "user-attribute-ldap-mapper",
+              "subComponents": {},
+              "config": {
+                "ldap.attribute": [
+                  "ou"
+                ],
+                "is.mandatory.in.ldap": [
+                  "false"
+                ],
+                "attribute.force.default": [
+                  "true"
+                ],
+                "is.binary.attribute": [
+                  "false"
+                ],
+                "read.only": [
+                  "true"
+                ],
+                "always.read.value.from.ldap": [
+                  "true"
+                ],
+                "user.model.attribute": [
+                  "ou"
+                ]
+              }
+            },
+            {
               "id": "8c8c2c60-444c-4b67-835c-2134e45a9699",
               "name": "email",
               "providerId": "user-attribute-ldap-mapper",
@@ -1819,20 +1867,20 @@
           ]
         },
         "config": {
-          "pagination": [
-            "false"
-          ],
           "fullSyncPeriod": [
             "-1"
+          ],
+          "pagination": [
+            "false"
           ],
           "startTls": [
             "false"
           ],
-          "usersDn": [
-            "dc=miempresa,dc=local"
-          ],
           "connectionPooling": [
             "false"
+          ],
+          "usersDn": [
+            "dc=miempresa,dc=local"
           ],
           "cachePolicy": [
             "DEFAULT"
@@ -1846,17 +1894,20 @@
           "enabled": [
             "true"
           ],
-          "bindCredential": [
-            "**********"
-          ],
           "bindDn": [
             "cn=admin,dc=miempresa,dc=local"
           ],
           "changedSyncPeriod": [
             "-1"
           ],
+          "bindCredential": [
+            "**********"
+          ],
           "usernameLDAPAttribute": [
             "uid"
+          ],
+          "lastSync": [
+            "1773466225"
           ],
           "vendor": [
             "other"
@@ -1888,11 +1939,11 @@
           "usePasswordModifyExtendedOp": [
             "false"
           ],
-          "trustEmail": [
-            "false"
-          ],
           "priority": [
             "0"
+          ],
+          "trustEmail": [
+            "false"
           ],
           "userObjectClasses": [
             "inetOrgPerson"
