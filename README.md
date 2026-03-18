@@ -45,6 +45,22 @@ SecureSuite/
 
 ---
 
+## Key Features (IGA & Advanced IAM)
+
+- Full Identity Lifecycle (JML): Automatización de los procesos de Joiner, Mover y Leaver mediante scripts CLI interconectados con el directorio raíz.
+
+- IGA Engine (Evolveum MidPoint): Implementación de un motor de gobernanza para la reconciliación de cuentas, gestión de recursos LDAP y aprovisionamiento automático de roles basado en atributos.
+
+- Advanced Policy Enforcement (SoD): Configuración de reglas de Segregación de Funciones (ej. exclusión mutua entre role_admin y role_employee) para garantizar el cumplimiento normativo y evitar conflictos de privilegios.
+
+- Delegated Access Governance: Flujo de trabajo de Access Request con aprobación delegada, permitiendo que los "Jefes de Área" gestionen el acceso de sus departamentos de forma autónoma a través de una interfaz Angular/ .NET 9.
+
+- Hybrid Identity Federation: Autenticación centralizada SSO mediante Keycloak (OIDC/OAuth2), integrando federación con OpenLDAP y proveedores externos como Google SSO.
+
+- Automated Role Mapping: Asignación dinámica de roles mediante lógica Groovy en el Object Template de MidPoint, vinculando la estructura organizativa (OU) con privilegios efectivos en el sistema.
+
+---
+
 ## Servicios y puertos
 
 | Servicio | Puerto | Credenciales por defecto |
