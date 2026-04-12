@@ -5,8 +5,8 @@
           xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
           xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3">
 
-    <name>OpenLDAP - SecureSuite</name>
-    <description>Recurso OpenLDAP de SecureSuite. Dominio miempresa.local.</description>
+    <name>OpenLDAP - Secure-CCL</name>
+    <description>Recurso OpenLDAP de Secure-CCL. Dominio miempresa.local.</description>
 
     <connectorRef type="ConnectorType">
         <filter>
