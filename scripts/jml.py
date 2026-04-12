@@ -1,6 +1,6 @@
 """
 jml.py — Joiner / Mover / Leaver
-SecureSuite IAM Lab
+Secure-CCL IAM/IGA Lab
 
 Simula el ciclo de vida de identidades sobre OpenLDAP.
 MidPoint detecta los cambios automáticamente en el siguiente Reconcile.
@@ -215,7 +215,7 @@ def leaver(conn):
 # ── MENÚ PRINCIPAL ────────────────────────────────────────────────────────────
 def menu():
     print("\n" + "="*60)
-    print("  SecureSuite — Gestión del Ciclo de Vida de Identidades")
+    print("  Secure-CCL — Gestión del Ciclo de Vida de Identidades")
     print("  Joiner / Mover / Leaver")
     print("="*60)
     print("\n  ¿Qué acción quieres realizar?\n")
