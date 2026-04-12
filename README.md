@@ -1,6 +1,6 @@
-# SecureSuite
+# Secure-CCL
 
-SecureSuite es una plataforma IAM/IGA completa desarrollada como proyecto personal, que integra tecnologías enterprise de gestión de identidades y accesos sobre una infraestructura dockerizada. El proyecto demuestra el ciclo de vida completo de identidades, desde el directorio LDAP hasta la gobernanza de roles, pasando por autenticación federada, aprovisionamiento automático y flujos de solicitud de acceso.
+Secure-CCL es una plataforma IAM/IGA completa desarrollada como proyecto personal, que integra tecnologías enterprise de gestión de identidades y accesos sobre una infraestructura dockerizada. El proyecto demuestra el ciclo de vida completo de identidades, desde el directorio LDAP hasta la gobernanza de roles, pasando por autenticación federada, aprovisionamiento automático y flujos de solicitud de acceso.
 
 ## Tecnologías utilizadas
 
@@ -20,7 +20,7 @@ SecureSuite es una plataforma IAM/IGA completa desarrollada como proyecto person
 ## Arquitectura
 
 ```
-SecureSuite/
+Secure-CCL/
 ├── keycloak/
 │   ├── 2cl-realm.json          # Partial export del Realm (grupos, roles, federación)
 │   └── themes/custom/login/    # Tema personalizado de login
@@ -88,8 +88,8 @@ SecureSuite/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/Kaesar88/SecureSuite.git
-cd SecureSuite
+git clone https://github.com/Kaesar88/SecureCCL.git
+cd SecureCCL
 ```
 
 ### 2. Configurar variables de entorno
@@ -144,7 +144,7 @@ python scripts/assign_groups.py
 1. **Resources → Import resource definition** → sube `midpoint/ldap-resource.xml`
 2. **Import object** → sube `midpoint/object-template.xml`
 3. En el recurso → **Accounts → Tasks → Import** para traer los usuarios
-4. **System Configuration → Policies → Object policies** → añade policy `UserType` con `SecureSuite User Template`
+4. **System Configuration → Policies → Object policies** → añade policy `UserType` con `Secure-CCL User Template`
 5. **Server Tasks → Reconciliation tasks** → crea y ejecuta la tarea de reconciliación
 
 ---
