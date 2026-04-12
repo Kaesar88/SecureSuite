@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  OBJECT TEMPLATE — SecureSuite
+  OBJECT TEMPLATE — Secure-CCL
   Asigna roles automáticamente según el atributo 'ou' del usuario.
 
   Mapeo:
@@ -20,7 +20,7 @@
                 xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
                 oid="10000000-0000-0000-0000-000000000001">
 
-    <name>SecureSuite User Template</name>
+    <name>Secure-CCL User Template</name>
     <description>Asigna roles automáticamente según el departamento (ou) del usuario LDAP.</description>
 
     <!-- ── DIRECCIÓN: role_admin + role_manager ─────────────────────────── -->
